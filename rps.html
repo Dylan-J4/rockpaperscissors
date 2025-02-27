@@ -4,75 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="rps-stylesheet.css">
+    <link href="https://fonts.googleapis.com/css2?family=Input+Mono+Narrow&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <script>
-        let humanScore = 0;
-        let computerScore = 0;
-        let rounds = 5;
+    <div class="container">
+        
+        <div class="header-container">
+            <img src="media/rock-paper-scissors_6851302.png" alt="RPS Logo" class="rps-logo">
+            <h1>Rock Paper Scissors</h1>
+            <img src="media/rock-paper-scissors_6851302.png" alt="RPS Logo" class="rps-logo">
+        </div>
+    
+        
+        <div class="main-container">
+            <div class="scores">
+                <h3>Your score: 0</h3>
+                <h3>Computer score: 0</h3>
+                <h3>Draws: 0</h3>
+            </div>
 
-        function getComputerChoice() {
-            const choices = ["rock", "paper", "scissors"];
-            const randomIndex = Math.floor(Math.random() * choices.length);
-            return choices[randomIndex];
-        }
+            <div class="result-container">
+                <h2>Round 1!</h2>
+            </div>
 
-        function getHumanChoice() {
-            let userInput;
-            do {
-                userInput = prompt("Rock, Paper or Scissors: ").toLowerCase();
-            } while (userInput !== "rock" && userInput !== "paper" && userInput !== "scissors");
-            return userInput;
-        }
-
-        function updateScores(result) {
-            if (result === 'human') {
-                humanScore += 1;
-            } else if (result === 'computer') {
-                computerScore += 1;
-            }
-        }
-
-        function playRound(humanChoice, computerChoice) {
-            console.log(`You chose ${humanChoice}, Computer chose ${computerChoice}.`);
-
-            if ((humanChoice === "rock" && computerChoice === "paper") ||
-                (humanChoice === "paper" && computerChoice === "scissors") ||
-                (humanChoice === "scissors" && computerChoice === "rock")) {
-                    updateScores('computer');
-                    console.log("Computer wins this round!");
-            } 
-            else if (humanChoice === computerChoice) {
-                console.log("It's a draw!");
-            }
-            else {
-                updateScores('human');
-                console.log("You win this round!");
-            }
-        }
-
-        function playGame() {
-            for (let i = 0; i < rounds; i++) {
-                console.log(`Round ${i + 1}`);
-                const humanChoice = getHumanChoice();
-                const computerChoice = getComputerChoice();
-                playRound(humanChoice, computerChoice);
-                console.log(`Current Score -> You: ${humanScore}, Computer: ${computerScore}`);
-            }
-
-            console.log("Game over!");
-            console.log(`Final Score -> You: ${humanScore}, Computer: ${computerScore}`);
-            
-            if (humanScore > computerScore) {
-                console.log("You're the winner!!");
-            } else if (computerScore > humanScore) {
-                console.log("Unlucky, the computer won this time.");
-            } else {
-                console.log("The game has ended in a draw!");
-            }
-        }
-
-        playGame();
-    </script>
+            <div class="button-container">
+                <button class="rps-button" id="rock-btn">Rock</button>
+                <button class="rps-button" id="paper-btn">Paper</button>
+                <button class="rps-button" id="scissors-btn">Scissors</button>
+            </div>
+        </div>
+    
+        
+        <div class="footer-container">
+            <h1>Thanks for playing!</h1>
+        </div>
+    </div>
 </body>
 </html>
